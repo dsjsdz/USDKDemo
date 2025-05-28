@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private UBoard mBoard;
-    private String commid = "/dev/ttyS7"; // guess, between /dev/ttyS0 and /dev/ttyS8
+    private String commid = "/dev/ttyS0"; // guess, between /dev/ttyS0 and /dev/ttyS8
 
     private EditText etCommid;
     private ListView listView;
@@ -101,10 +101,9 @@ public class MainActivity extends Activity {
                 int ret = mBoard.EF_OpenDev(string, 9600);
                 mBoard.setPayChannel(new PCReplyPara(2));
 
-                this.total += 1;
-                addLog(ret == ErrorConst.MDB_ERR_NO_ERR ? "Successfully opened, total: " + this.total : "Failed to open" + " serial port " + string);
+                addLog(ret == ErrorConst.MDB_ERR_NO_ERR ? "成功打开串口" : "串口打开失败" + " ，串口路径: " + string);
             } else {
-                addLog("The serial port name cannot be empty.");
+                addLog("串口地址不能为空，请输入: /dev/ttyS0 - /dev/ttyS8");
             }
         });
 
@@ -132,12 +131,12 @@ public class MainActivity extends Activity {
 
         clickView(R.id.btn_version, view -> {
             if (checkOpen()) {
-                addLog("Check software version.");
+                addLog("正在确认版本号");
                 SVReplyPara para = new SVReplyPara();
                 mBoard.getSoftwareVersion(para);
                 Log.i(TAG, para.toString());
                 if (para.isOK()) {
-                    addLog("version:" + para.getVersion());
+                    addLog("版本: " + para.getVersion());
                 } else {
                     addError(para);
                 }
@@ -282,6 +281,7 @@ public class MainActivity extends Activity {
                 RadioButton rbtLift = findViewById(R.id.rtb_lift_open);
                 boolean lift = rbtLift.isChecked();
                 addLog("Vend from channel " + no);
+                // addr = 1, no = 0, type = 2, check = false, lift = false
                 SReplyPara para = new SReplyPara(addr, no, type, check, lift);
                 mBoard.Shipment(para);
                 Log.i(TAG, para.toString());
@@ -869,9 +869,9 @@ public class MainActivity extends Activity {
         if (!TextUtils.isEmpty(string)) {
             mBoard = USDK.getInstance().create(string);
             int ret = mBoard.EF_OpenDev(string, 9600);
-            addLog(ret == ErrorConst.MDB_ERR_NO_ERR ? "Successfully opened" : "Failed to open" + " serial port " + string);
+            addLog(ret == ErrorConst.MDB_ERR_NO_ERR ? "成功打开串口" : "打开串口失败" + "，串口路径是: " + string);
         } else {
-            addLog("The serial port name cannot be empty.");
+            addLog("请输入串口路径");
         }
     }
 
@@ -881,7 +881,7 @@ public class MainActivity extends Activity {
 
     private boolean checkOpen() {
         if (!isOpened()) {
-            addLog("Serial port is not open.");
+            addLog("串口未打开，请先打开串口");
             return false;
         }
         return true;
