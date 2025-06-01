@@ -1,0 +1,16 @@
+<resources>
+  <string name="app_name">Awish Assistant</string>
+  <string name="model">Model No</string>
+  <string name="manufacturer">Manufacturer</string>
+  <string name="platform">Platform</string>
+  <string name="release_version">Release Version</string>
+  <string name="sdk_version">API Version</string>
+  <string name="version_name">APP Version</string>
+  <string name="technical_support">Technical Support</string>
+  <string name="nav_splash">Splash</string>
+  <string name="nav_about">About</string>
+  <string name="nav_back">Back</string>
+  <string name="to_homepage">To Homepage</string>
+  <string name="countdown">Countdown %1$ds</string>
+  <string name="contacts">Le Jiang / 18122205556</string>
+</resources>

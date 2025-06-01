@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">USDKDemo</string>
+  <string name="app_name">鼎商助手</string>
+  <string name="model">设备型号</string>
+  <string name="manufacturer">制造商</string>
+  <string name="platform">运行环境</string>
+  <string name="release_version">系统版本</string>
+  <string name="sdk_version">API 级别</string>
+  <string name="version_name">App 版本</string>
+  <string name="technical_support">技术支持</string>
+  <string name="nav_splash">广告页</string>
+  <string name="nav_about">关于</string>
+  <string name="nav_back">返回</string>
+  <string name="to_homepage">进入主页</string>
+  <string name="countdown">倒计时 %1$ds</string>
+  <string name="contacts">蒋乐 / 18122205556</string>
 </resources>
