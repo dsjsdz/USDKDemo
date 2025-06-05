@@ -66,9 +66,6 @@
   <string name="shipment_success">Shipment Command Sent</string>
   <string name="shipment_fail">Shipment Command Sent Fail</string>
   <string name="btn_shipment_test">Shipment Test</string>
-  <string name="board_soft_version">Board Software Version</string>
-  <string name="read_board_soft_version_fail">Read Board Software Version Fail</string>
-  <string name="read_board_soft_version_success">Read Board Software Version Success, Software Version: %1$s</string>
   <string name="board_hardware_version">Board Hardware Version</string>
   <string name="read_board_hardware_version_fail">Read Hardware Config Fail</string>
   <string name="read_board_hardware_version_success">Read Hardware Config Success, Software Version: %1$s</string>

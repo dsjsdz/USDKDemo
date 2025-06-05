@@ -60,7 +60,6 @@ import cc.uling.usdk.board.wz.para.IOReplyPara
 import cc.uling.usdk.board.wz.para.ResetReplyPara
 import cc.uling.usdk.board.wz.para.SReplyPara
 import cc.uling.usdk.board.wz.para.SSReplyPara
-import cc.uling.usdk.board.wz.para.SVReplyPara
 import cc.uling.usdk.constants.CodeUtil
 import cc.uling.usdk.constants.ErrorConst
 import com.awish.assistant.ui.components.AddrSelectorDialog
@@ -516,43 +515,6 @@ fun Welcome(navController: NavHostController) {
               modifier = Modifier.weight(1f)
             ) {
               Text(stringResource(R.string.board_hardware_version))
-            }
-
-            Button(
-              onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
-                SVReplyPara(option.addr).apply {
-                  board.GetSoftwareVersion(this)
-                }.apply {
-                  if (this.isOK) {
-                    logs.add(
-                      LogEntry.new(
-                        context.getString(R.string.read_board_soft_version_success, this.version),
-                        LogLevel.SUCCESS
-                      )
-                    )
-                  } else {
-                    logs.add(
-                      LogEntry.new(
-                        context.getString(R.string.read_board_soft_version_fail),
-                        LogLevel.DANGER
-                      )
-                    )
-                  }
-                }
-              },
-              modifier = Modifier.weight(1f)
-            ) {
-              Text(stringResource(R.string.board_soft_version))
             }
           }
 

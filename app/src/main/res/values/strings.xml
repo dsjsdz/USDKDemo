@@ -66,9 +66,6 @@
   <string name="shipment_success">出货命令已发起</string>
   <string name="shipment_fail">出货命令发起失败</string>
   <string name="btn_shipment_test">出货测试</string>
-  <string name="board_soft_version">驱动板软件版本</string>
-  <string name="read_board_soft_version_fail">读取驱动板软件版本失败</string>
-  <string name="read_board_soft_version_success">读取驱动板软件版本成功, 软件版本号: %1$s</string>
   <string name="board_hardware_version">驱动板硬件版本</string>
   <string name="read_board_hardware_version_fail">读取硬件配置失败</string>
   <string name="read_board_hardware_version_success">读取硬件配置成功, 软件版本号: %1$s</string>
