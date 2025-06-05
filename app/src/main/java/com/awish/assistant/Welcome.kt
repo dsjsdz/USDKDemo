@@ -426,17 +426,8 @@ fun Welcome(navController: NavHostController) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
           ) {
             Button(
+              enabled = option.isOpened,
               onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
                 IOReplyPara(option.addr).apply {
                   board.GetIOStatus(this)
                 }.apply {
@@ -478,17 +469,8 @@ fun Welcome(navController: NavHostController) {
             }
 
             Button(
+              enabled = option.isOpened,
               onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
                 HCReplyPara(option.addr).apply {
                   board.ReadHardwareConfig(this)
                 }.apply {
@@ -545,7 +527,7 @@ fun Welcome(navController: NavHostController) {
                     )
                   )
                 },
-                enabled = true
+                enabled = option.isOpened,
               )
               Text(
                 stringResource(R.string.is_dc)
@@ -569,7 +551,7 @@ fun Welcome(navController: NavHostController) {
                     )
                   )
                 },
-                enabled = true
+                enabled = option.isOpened,
               )
               Text(
                 stringResource(R.string.is_lp)
@@ -578,28 +560,12 @@ fun Welcome(navController: NavHostController) {
 
             Button(
               modifier = Modifier.weight(2f),
+              enabled = option.isOpened,
               onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
                 ResetReplyPara(option.addr).apply {
                   board.ResetLift(this)
                 }.apply {
-                  if (this.isOK) {
-                    logs.add(
-                      LogEntry.new(
-                        context.getString(R.string.reset_lift_success),
-                        LogLevel.SUCCESS
-                      )
-                    )
-                  } else {
+                  if (!this.isOK) {
                     logs.add(
                       LogEntry.new(
                         context.getString(R.string.reset_lift_fail),
@@ -608,6 +574,12 @@ fun Welcome(navController: NavHostController) {
                     )
                   }
                 }
+                logs.add(
+                  LogEntry.new(
+                    context.getString(R.string.reset_lift_success),
+                    LogLevel.SUCCESS
+                  )
+                )
               },
             ) {
               Text(stringResource(R.string.reset_lift))
@@ -714,17 +686,8 @@ fun Welcome(navController: NavHostController) {
             }
 
             Button(
+              enabled = option.isOpened,
               onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
                 SReplyPara(
                   option.addr,
                   option.code!!,
@@ -757,17 +720,8 @@ fun Welcome(navController: NavHostController) {
             }
 
             Button(
+              enabled = option.isOpened,
               onClick = {
-                if (!board.EF_Opened() && !option.isOpened) {
-                  logs.add(
-                    LogEntry.new(
-                      context.getString(R.string.open_serial_first),
-                      LogLevel.DANGER
-                    )
-                  )
-                  return@Button
-                }
-
                 val para = SSReplyPara(option.addr).apply { board.GetShipmentStatus(this) }.apply {
                   if (!this.isOK) {
                     logs.add(
