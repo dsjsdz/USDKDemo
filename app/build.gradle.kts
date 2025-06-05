@@ -11,11 +11,14 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.compose.compiler)
+
+  id("com.google.dagger.hilt.android")
+  kotlin("kapt")
 }
 
 android {
   namespace = "com.awish.assistant"
-  compileSdk = 35
+  compileSdk = libs.versions.compile.sdk.get().toInt()
 
   defaultConfig {
     applicationId = "com.awish.assistant"
@@ -82,7 +85,17 @@ dependencies {
 
   implementation("androidx.appcompat:appcompat:1.6.1")
   implementation("com.google.android.material:material:1.10.0")
-  implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+  // 核心 Hilt 依赖
+  implementation(libs.hilt.android)
+  implementation(libs.firebase.dataconnect)
+  kapt(libs.hilt.android.compiler)
+
+  // Hilt 对 Jetpack 集成的支持
+  implementation(libs.androidx.hilt.navigation.compose)
+  kapt(libs.androidx.hilt.compiler)
+  implementation(libs.androidx.material.icons.extended)
+  implementation(libs.material3)
 
   // https://developer.android.com/develop/ui/compose/setup#kotlin_1
   implementation(libs.coil.compose) // 版本可以升级查看最新

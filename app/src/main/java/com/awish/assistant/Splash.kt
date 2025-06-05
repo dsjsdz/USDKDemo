@@ -30,11 +30,11 @@ fun Splash(navController: NavHostController) {
   // 启动倒计时（仅用作显示用，不自动跳转）
   LaunchedEffect(Unit) {
     while (timeLeft.intValue > 0) {
-      delay(1000)
+      delay(5000)
       timeLeft.intValue -= 1
-      if (timeLeft.intValue == 0) {
-        navController.navigate("main")
-      }
+//      if (timeLeft.intValue == 0) {
+//        navController.navigate("main")
+//      }
     }
   }
 
