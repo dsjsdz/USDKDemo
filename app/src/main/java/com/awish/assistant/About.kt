@@ -35,7 +35,7 @@ import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Setting(navController: NavHostController) {
+fun About(navController: NavHostController) {
   val version = Build.VERSION.SDK_INT
   val versionName = Build.VERSION.RELEASE
   val appVersion = BuildConfig.VERSION_NAME
