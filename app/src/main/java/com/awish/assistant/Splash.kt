@@ -30,11 +30,13 @@ fun Splash(navController: NavHostController) {
   // 启动倒计时（仅用作显示用，不自动跳转）
   LaunchedEffect(Unit) {
     while (timeLeft.intValue > 0) {
-      delay(5000)
+      delay(3000)
       timeLeft.intValue -= 1
-//      if (timeLeft.intValue == 0) {
-//        navController.navigate("main")
-//      }
+      if (timeLeft.intValue == 0) {
+        navController.navigate("main") {
+          popUpTo("splash") { inclusive = true }
+        }
+      }
     }
   }
 
@@ -55,8 +57,12 @@ fun Splash(navController: NavHostController) {
           .padding(16.dp)
       ) {
         Button(
-          onClick = {},
-          enabled = false,
+          enabled = true,
+          onClick = {
+            navController.navigate("main") {
+              popUpTo("splash") { inclusive = true }
+            }
+          },
           shape = RoundedCornerShape(20.dp),
           colors = ButtonDefaults.buttonColors(
             containerColor = Color.Black.copy(alpha = 0.3f),
@@ -74,21 +80,19 @@ fun Splash(navController: NavHostController) {
     }
 
     // 底部中间的“进入主页”按钮
-    if (timeLeft.intValue == 0) {
-      Box(
-        modifier = Modifier
-          .align(Alignment.BottomCenter)
-          .padding(bottom = 32.dp)
-      ) {
-        Button(
-          onClick = {
-            navController.navigate("main") {
-              popUpTo("splash") { inclusive = true }
-            }
+    Box(
+      modifier = Modifier
+        .align(Alignment.BottomCenter)
+        .padding(bottom = 32.dp)
+    ) {
+      Button(
+        onClick = {
+          navController.navigate("main") {
+            popUpTo("splash") { inclusive = true }
           }
-        ) {
-          Text(text = stringResource(id = R.string.to_homepage))
         }
+      ) {
+        Text(text = stringResource(id = R.string.to_homepage))
       }
     }
   }
