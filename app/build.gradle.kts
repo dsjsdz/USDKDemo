@@ -25,8 +25,8 @@ android {
     minSdk = 24
     @Suppress("OldTargetApi") // 保留你原有注释用途
     targetSdk = 34
-    versionCode = 3
-    versionName = "1.1.1"
+    versionCode = 4
+    versionName = "1.2.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -83,7 +83,7 @@ dependencies {
   // add gson
   implementation(libs.gson)
 
-  implementation("com.google.android.material:material:1.10.0")
+  implementation(libs.material)
 
   // 核心 Hilt 依赖
   implementation(libs.hilt.android)
