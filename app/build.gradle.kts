@@ -83,12 +83,10 @@ dependencies {
   // add gson
   implementation(libs.gson)
 
-  implementation("androidx.appcompat:appcompat:1.6.1")
   implementation("com.google.android.material:material:1.10.0")
 
   // 核心 Hilt 依赖
   implementation(libs.hilt.android)
-  implementation(libs.firebase.dataconnect)
   kapt(libs.hilt.android.compiler)
 
   // Hilt 对 Jetpack 集成的支持
@@ -107,7 +105,6 @@ dependencies {
   implementation(libs.androidx.ui)
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
-  implementation(libs.androidx.material3)
   implementation(libs.androidx.appcompat)
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
